@@ -25,7 +25,6 @@ class House:
         legal_status: str,
         economic_activity: int,
         distance_to_university: float,
-        asking_price: float,
     ):
         self.house_id = house_id
         self.area_m2 = area_m2
@@ -36,5 +35,5 @@ class House:
         self.legal_status = legal_status
         self.economic_activity = economic_activity
         self.distance_to_university = distance_to_university
-        self.asking_price = asking_price
+        
 
