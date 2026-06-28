@@ -4,8 +4,11 @@ a user can own houses and can create a listing.
 the attributes are based on the personal belief that they affect the real estate price. the class 
 can extend to add any other attributes.
 """
-from domain.listing import Listing
-from domain.offer import Offer 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING :
+    from domain.listing import Listing
+    from domain.offer import Offer
+
 class User :
      def __init__(
         self,
@@ -49,7 +52,7 @@ class User :
         self.created_listings.append(listing)
         return listing
      
-     def make_offer(self, offer_id: int, listing, amount: float, message: str = ""):
+     def make_offer(self, offer_id: int, listing : 'Listing', amount: float, message: str = ""):
         offer = Offer(
             offer_id=offer_id,
             buyer=self,

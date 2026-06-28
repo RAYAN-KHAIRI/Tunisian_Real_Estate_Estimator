@@ -1,4 +1,8 @@
 # domain/listing.py
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .offer import Offer 
 
 class Listing:
     """
@@ -23,7 +27,7 @@ class Listing:
         self.status = status
         self.offers = []
 
-    def add_offer(self, offer):
+    def add_offer(self, offer : "Offer"):
         if self.status != "active":
             raise ValueError("Cannot make an offer on an inactive or sold listing.")
 
