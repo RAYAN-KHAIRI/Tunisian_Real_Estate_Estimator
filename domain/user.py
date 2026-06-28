@@ -4,10 +4,7 @@ a user can own houses and can create a listing.
 the attributes are based on the personal belief that they affect the real estate price. the class 
 can extend to add any other attributes.
 """
-from typing import TYPE_CHECKING
-if TYPE_CHECKING :
-    from domain.listing import Listing
-    from domain.offer import Offer
+
 
 class User :
      def __init__(
@@ -37,6 +34,7 @@ class User :
         self.owned_houses.append(house)
 
      def create_listing(self, listing_id: int, house, price: float, title: str, description: str):
+        from .listing import Listing # avoiding circular import
         if house not in self.owned_houses:
             raise ValueError("User cannot create a listing for a house they do not own.")
 
@@ -53,6 +51,7 @@ class User :
         return listing
      
      def make_offer(self, offer_id: int, listing : 'Listing', amount: float, message: str = ""):
+        from .offer import Offer # avoiding circular import
         offer = Offer(
             offer_id=offer_id,
             buyer=self,
